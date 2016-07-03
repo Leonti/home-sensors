@@ -14,7 +14,6 @@ def mh_z19():
   try:
     for x in range(0, 10):
       written_num = conn.write("\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      print "bytes written", str(written_num)
       conn.flush()
       time.sleep(0.5)
 
