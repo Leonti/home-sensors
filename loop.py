@@ -12,13 +12,17 @@ c.execute("CREATE TABLE IF NOT EXISTS log (temperature DOUBLE, humidity DOUBLE, 
 
 try:
   while True:
-    co2 = mh_z19()
-    humidity, temperature = dht22()
+    try:
+      co2 = mh_z19()
+      humidity, temperature = dht22()
     
-    print('Temp={0:0.1f}*  Humidity={1:0.1f}% CO2={2:d}'.format(temperature, humidity, co2))
+      print('Temp={0:0.1f}*  Humidity={1:0.1f}% CO2={2:d}'.format(temperature, humidity, co2))
 
-    c.execute("INSERT INTO log VALUES (?,?,?,?)", (temperature, humidity, co2, int(time.time())))
-    conn.commit()
-    time.sleep(60)
+      c.execute("INSERT INTO log VALUES (?,?,?,?)", (temperature, humidity, co2, int(time.time())))
+      conn.commit()
+    except:
+      print('Reading failed, will retry in a minute')
+    finally:
+      time.sleep(60)
 finally:
   conn.close()
