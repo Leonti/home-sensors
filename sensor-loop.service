@@ -1,0 +1,10 @@
+[Unit]
+Description=Temperature, humidity and co2 sensors loop
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /home/pi/sensors/loop.py
+
+[Install]
+WantedBy=multi-user.target
