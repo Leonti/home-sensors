@@ -1,5 +1,9 @@
 # home-sensors
-Reading team,humidity and co2
+Reading team,humidity and co2  
+
+Depends on  
+https://github.com/adafruit/Adafruit_Python_DHT  
+
 
 Getty has to be disabled:  
 `sudo systemctl disable serial-getty@ttyAMA0.service`  
