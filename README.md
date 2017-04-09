@@ -7,6 +7,7 @@ https://github.com/adafruit/Adafruit_Python_DHT
 
 Getty has to be disabled:  
 `sudo systemctl disable serial-getty@ttyAMA0.service`  
+`systemctl mask serial-getty@ttyAMA0.service`  
 
 http://www.raspberrypi-spy.co.uk/2015/10/how-to-autorun-a-python-script-on-boot-using-systemd/  
 
