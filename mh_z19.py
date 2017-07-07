@@ -13,12 +13,12 @@ def mh_z19():
 
   try:
     for x in range(0, 10):
-      written_num = conn.write("\xff\x01\x86\x00\x00\x00\x00\x00\x79")
+      written_num = conn.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
       conn.flush()
       time.sleep(0.5)
 
       response = conn.read(9)
-      if len(response) == 9 and response[0] == "\xff" and response[1] == "\x86":
+      if len(response) == 9 and response[0] == b"\xff" and response[1] == b"\x86":
         return ord(response[2])*256 + ord(response[3])
     return None
   finally:
