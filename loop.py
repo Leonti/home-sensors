@@ -1,5 +1,6 @@
 import os
 import sys
+import traceback
 
 RESIN = os.environ.get("RESIN", None)
 
@@ -29,6 +30,7 @@ try:
       collection.insert_one(entry)
     except:
       print("Reading failed, will retry in a minute:", sys.exc_info()[0])
+      traceback.print_exc()
     finally:
       time.sleep(60)
 finally:
