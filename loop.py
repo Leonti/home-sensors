@@ -26,8 +26,8 @@ try:
                "co2": co2,
                "timestamp": int(time.time())}
       collection.insert_one(entry)
-    except as err:
-      print("Reading failed, will retry in a minute: {0}".format(err))
+    except:
+      print("Reading failed, will retry in a minute:", sys.exc_info()[0])
     finally:
       time.sleep(60)
 finally:
