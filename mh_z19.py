@@ -10,7 +10,7 @@ def mh_z19():
                       parity=serial.PARITY_NONE,
                       stopbits=serial.STOPBITS_ONE,
                       timeout=1.0)
-	
+
   try:
     for x in range(0, 10):
       written_num = conn.write("\xff\x01\x86\x00\x00\x00\x00\x00\x79")
@@ -25,4 +25,4 @@ def mh_z19():
     conn.close()
 
 if __name__ == '__main__':
-  print str(mh_z19())
+  print(str(mh_z19()))
