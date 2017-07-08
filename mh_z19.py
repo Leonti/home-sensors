@@ -4,7 +4,7 @@ import serial
 import time
 
 def mh_z19():
-  conn = serial.Serial('/dev/serial1',
+  conn = serial.Serial('/dev/serial0',
                       baudrate=9600,
                       bytesize=serial.EIGHTBITS,
                       parity=serial.PARITY_NONE,
