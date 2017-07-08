@@ -19,8 +19,8 @@ def mh_z19():
 
       response = conn.read(9)
       print(str(response))
-      if len(response) == 9 and response[0] == b"\xff" and response[1] == b"\x86":
-        return ord(response[2])*256 + ord(response[3])
+      if len(response) == 9 and response[0] == int.from_bytes(b'\xff', byteorder='big') and response[1] == int.from_bytes(b'\x86', byteorder='big'):
+        return response[2]*256 + response[3]
     return None
   finally:
     conn.close()
