@@ -1,5 +1,6 @@
 # RESIN_HOST_CONFIG_dtoverlay 	pi3-miniuart-bt
 # RESIN_HOST_CONFIG_dtoverlay   lirc-rpi:gpio_in_pin=23,gpio_out_pin=26
+# dtoverlay commands need to be added to /boot/config.txt
 
 FROM resin/%%RESIN_MACHINE_NAME%%-python:3.6.1-wheezy
 
