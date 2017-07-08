@@ -22,8 +22,6 @@ RUN mv lirc.conf /etc/lirc/lircd.conf
 RUN echo "lirc_dev" >> /etc/modules
 RUN echo "lirc_rpi gpio_in_pin=23 gpio_out_pin=26" >> /etc/modules
 
-RUN /etc/init.d/lirc restart
-
 ENV INITSYSTEM on
 
-CMD ["python","loop.py"]
+CMD ["bash","run.sh"]
