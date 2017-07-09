@@ -31,6 +31,7 @@ def collect_and_send_readings():
   readings.insert_one(entry)
 
 def handle_command(command):
+  global arduinoConn
   if command['type'] == 'LED':
     if arduinoConn == None:
       arduinoConn = led_stripe.connectToArduino()
