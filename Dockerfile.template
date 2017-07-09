@@ -25,3 +25,5 @@ RUN echo "lirc_rpi gpio_in_pin=23 gpio_out_pin=26" >> /etc/modules
 ENV INITSYSTEM on
 
 CMD ["bash","run.sh"]
+
+#irsend send_once mitsubishi OFF
