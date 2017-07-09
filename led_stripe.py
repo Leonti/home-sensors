@@ -2,10 +2,13 @@ import serial
 import time
 
 def connectToArduino():
-  conn = serial.Serial('/dev/ttyUSB0', 115200)
-  wait_for_connection(conn)
-
-  return conn
+  try:
+    conn = serial.Serial('/dev/ttyUSB0', 115200)
+    wait_for_connection(conn)
+    return conn
+  except:
+    print("Could not open a connection to Arduino")
+    return None    
 
 def send_rgb(conn, r, g, b):
   command = ','.join([str(r), str(g), str(b)] * 4) + 'e'
