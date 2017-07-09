@@ -35,9 +35,9 @@ def handle_command(command):
   if command['type'] == 'LED':
     if arduinoConn == None:
       arduinoConn = led_stripe.connectToArduino()
-      print('LED command')
-      data = command['data']
-      led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
+  print('LED command')
+  data = command['data']
+  led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
 
 counter = 0
 try:
