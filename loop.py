@@ -39,7 +39,7 @@ def handle_command(command):
     print('LED command')
     data = command['data']
     led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
-  else if command['type'] == 'AC':
+  elif command['type'] == 'AC':
     print('AC command')
     ac.send_command(command['data'])
 
