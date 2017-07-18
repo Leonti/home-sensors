@@ -2,6 +2,7 @@ import os
 import sys
 import traceback
 import led_stripe
+import ac
 
 RESIN = os.environ.get("RESIN", None)
 
@@ -35,9 +36,12 @@ def handle_command(command):
   if command['type'] == 'LED':
     if arduinoConn == None:
       arduinoConn = led_stripe.connectToArduino()
-  print('LED command')
-  data = command['data']
-  led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
+    print('LED command')
+    data = command['data']
+    led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
+  else if command['type'] == 'AC':
+    print('AC command')
+    ac.send_command(command['data'])
 
 counter = 0
 try:
