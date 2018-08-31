@@ -18,6 +18,7 @@ mongoClient[os.environ.get("MONGO_DB", None)].authenticate(os.environ.get("MONGO
 db = mongoClient[os.environ.get("MONGO_DB", None)]
 readings = db['readings']
 commands = db['commands']
+latest = db['latest']
 arduinoConn = led_stripe.connectToArduino()
 
 def collect_and_send_readings():
@@ -30,6 +31,7 @@ def collect_and_send_readings():
            "co2": co2,
            "timestamp": int(time.time())}
   readings.insert_one(entry)
+  latest.find_one_and_replace({}, entry)
 
 def handle_command(command):
   global arduinoConn
