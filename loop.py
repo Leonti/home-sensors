@@ -31,7 +31,7 @@ def collect_and_send_readings():
            "co2": co2,
            "timestamp": int(time.time())}
   readings.insert_one(entry)
-  latest.find_one_and_replace({}, entry)
+  latest.find_one_and_replace({}, entry, upsert = True)
 
 def handle_command(command):
   global arduinoConn
