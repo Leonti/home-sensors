@@ -1,8 +1,8 @@
 # RESIN_HOST_CONFIG_dtoverlay 	pi3-miniuart-bt
-# RESIN_HOST_CONFIG_dtoverlay   lirc-rpi:gpio_in_pin=23,gpio_out_pin=26
+# RESIN_HOST_CONFIG_dtoverlay   gpio-ir-tx,gpio_pin=26
 # dtoverlay commands need to be added to /boot/config.txt
 
-FROM resin/%%RESIN_MACHINE_NAME%%-python:3.6.1-wheezy
+FROM balenalib/raspberrypi3-python:3.7.4
 
 RUN apt-get update && apt-get install -y build-essential git lirc
 
@@ -17,10 +17,11 @@ WORKDIR /root/home-sensors
 COPY . /root/home-sensors
 RUN pip install -r requirements.txt
 
-RUN mv hardware.conf /etc/lirc/hardware.conf
+#RUN mv hardware.conf /etc/lirc/hardware.conf
+RUN mv hardware.conf /etc/lirc/lirc_options.conf
 RUN mv lirc.conf /etc/lirc/lircd.conf
-RUN echo "lirc_dev" >> /etc/modules
-RUN echo "lirc_rpi gpio_in_pin=23 gpio_out_pin=26" >> /etc/modules
+#RUN echo "lirc_dev" >> /etc/modules
+#RUN echo "lirc_rpi gpio_in_pin=23 gpio_out_pin=26" >> /etc/modules
 
 ENV INITSYSTEM on
 
