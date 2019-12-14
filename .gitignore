@@ -90,3 +90,5 @@ ENV/
 
 .mongo
 py3env
+
+Dockerfile-test

@@ -19,7 +19,7 @@ db = mongoClient[os.environ.get("MONGO_DB", None)]
 readings = db['readings']
 commands = db['commands']
 latest = db['latest']
-arduinoConn = led_stripe.connectToArduino()
+#arduinoConn = led_stripe.connectToArduino()
 
 def collect_and_send_readings():
   co2 = mh_z19()
@@ -35,13 +35,13 @@ def collect_and_send_readings():
   latest.find_one_and_replace({'_id': 'latest'}, entry, upsert = True)
 
 def handle_command(command):
-  global arduinoConn
+ # global arduinoConn
   if command['type'] == 'LED':
-    if arduinoConn == None:
-      arduinoConn = led_stripe.connectToArduino()
+#    if arduinoConn == None:
+#      arduinoConn = led_stripe.connectToArduino()
     print('LED command')
     data = command['data']
-    led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
+#    led_stripe.send_rgb(arduinoConn, data['r'], data['g'], data['b'])
   elif command['type'] == 'AC':
     print('AC command')
     ac.send_command(command['data'])
@@ -70,5 +70,5 @@ try:
         if counter == 60:
           counter = 0
 finally:
-  arduinoConn.close()
+#  arduinoConn.close()
   print("Finished")
