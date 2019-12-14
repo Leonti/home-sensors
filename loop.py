@@ -40,7 +40,7 @@ def collect_and_send_readings():
 def collect_and_send_dust_readings():
   (pm2_5, pm10) = read_sds011()
 
-  print('pm2.5={0:0.1f}  pm10={1:0.1f}'.format(pm2_5, pm10))
+  print('pm2.5={0:0.1f}ppm  pm10={1:0.1f}ppm'.format(pm2_5, pm10))
   entry = {"pm2_5": pm2_5,
            "pm10": pm10,
            "timestamp": int(time.time())}
